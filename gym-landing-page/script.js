@@ -1,0 +1,7 @@
+const menu=document.querySelector('.menu-btn'),links=document.querySelector('.links');menu.addEventListener('click',()=>links.classList.toggle('open'));document.querySelectorAll('.links a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+document.querySelectorAll('.faq-item').forEach(item=>item.addEventListener('click',()=>{document.querySelectorAll('.faq-item').forEach(x=>{if(x!==item)x.classList.remove('open')});item.classList.toggle('open')}));
+
+const modal=document.getElementById('modal'),joinBtn=document.getElementById('joinBtn'),close=document.getElementById('close'),form=document.getElementById('leadForm'),note=document.getElementById('formNote');joinBtn.addEventListener('click',()=>modal.classList.add('show'));close.addEventListener('click',()=>modal.classList.remove('show'));modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('show')});form.addEventListener('submit',e=>{e.preventDefault();note.textContent='Thanks! Your intro request is ready to be connected to your booking system.';form.reset()});
